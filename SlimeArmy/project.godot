@@ -11,7 +11,13 @@ config_version=4
 [application]
 
 config/name="Slime Army"
+run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=1422
+window/size/height=800
 
 [physics]
 
