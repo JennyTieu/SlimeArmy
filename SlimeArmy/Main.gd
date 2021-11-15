@@ -1,7 +1,7 @@
 extends Node2D
 
 const SLIME = 3
-const PLANT = 2
+const PLANT = 4
 var plant_pos
 var slime_body = [Vector2(5,10)]
 var slime_direction = Vector2(1,0)
