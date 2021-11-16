@@ -2,13 +2,20 @@ extends Node2D
 
 const SLIME = 3
 const PLANT = 4
-var plant_pos
+var plant_pos = []
+var plant_pic = []
 var slime_body = [Vector2(5,10)]
 var slime_direction = Vector2(1,0)
 var add_plant = false
+var time_passed = 0
+var time_new = 0
+var reset = 0
+var time_reset=0
+var season = 0
+var season_x =0
 
 func _ready():
-	plant_pos = place_plant()
+	init_plant()
 	draw_plant()
 	draw_slime()
 	
@@ -17,10 +24,11 @@ func place_plant():
 	var x = randi() % 30
 	var y = randi() % 20
 	return Vector2(x,y)
-
-
+		
+		
 func draw_plant():
-	$SlimePlant.set_cell(plant_pos.x, plant_pos.y,PLANT)
+	for i in range(plant_pos.size()):
+		$SlimePlant.set_cell(plant_pos[i].x, plant_pos[i].y, plant_pic[i])
 
 
 func draw_slime():
@@ -74,9 +82,10 @@ func _input(event):
 			slime_direction = Vector2(0,1)
 	
 func check_plant_farmed():
-	if plant_pos == slime_body[0]:
-		plant_pos = place_plant()
-		add_plant = true
+	for i in range(plant_pos.size()):
+		if plant_pos[i] == slime_body[0]:
+			plant_pos[i] = place_plant()
+			add_plant = true
 		
 func check_game_over():
 	var head = slime_body[0]
@@ -91,13 +100,50 @@ func check_game_over():
 func reset():
 	slime_body = [Vector2(5,10)]
 	slime_direction = Vector2(1,0)
+	timer_reset()
 
 func _on_SlimeTick_timeout():
 	move_slime()
 	draw_plant()
 	draw_slime()
 	check_plant_farmed()
-	
+	timer()
+	check_season()
 	
 func _process(delta):
 	check_game_over()
+
+#Funktion zum initialisieren von mehreren plants + ihren Bildern
+func init_plant():
+	for i in range (10):
+		plant_pos.append(place_plant())
+		var x = rand_range(3,5) #range: const der tiles
+		plant_pic.append(x) 
+
+
+#TODO:
+#Zeitlimit für season, vlt iwo anzeigen lassen
+#Timer hat Probleme wenn man schnell hintereinander stirbt
+func timer():
+	time_new = (OS.get_ticks_msec()/1000-1) - (time_reset*reset)
+	if time_passed < time_new:
+		time_passed = time_new
+	#	einkommentieren damit time in konsole
+		print(time_passed)
+
+func timer_reset():
+	reset+=1
+	time_reset = time_passed
+	time_passed = 0
+	return reset
+	
+
+func check_season():
+	if  season_x < time_passed:
+		season_x = time_passed
+		if season_x % 5 == 0:
+			season=season+1%4
+			print("season changed")
+	
+
+ 
