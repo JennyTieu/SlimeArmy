@@ -117,7 +117,7 @@ func _process(delta):
 func init_plant():
 	for i in range (10):
 		plant_pos.append(place_plant())
-		var x = rand_range(3,5) #range: const der tiles
+		var x = rand_range(4,10) #range: const der tiles
 		plant_pic.append(x) 
 
 
