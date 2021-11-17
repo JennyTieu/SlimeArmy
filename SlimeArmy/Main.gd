@@ -129,21 +129,26 @@ func timer():
 	if time_passed < time_new:
 		time_passed = time_new
 	#	einkommentieren damit time in konsole
+		$HUD.update_time(time_passed)
 		print(time_passed)
 
 func timer_reset():
 	reset+=1
 	time_reset = time_passed
 	time_passed = 0
+	season_x=0
 	return reset
-	
 
+#"season change" nach 10 sek
 func check_season():
 	if  season_x < time_passed:
 		season_x = time_passed
-		if season_x % 5 == 0:
+		if season_x % 10 == 0:
 			season=season+1%4
-			print("season changed")
-	
-
+			#print("season changed")
+			match season:
+				0: $HUD.update_season("Spring")
+				1: $HUD.update_season("Summer")
+				2: $HUD.update_season("Autumn")
+				3: $HUD.update_season("Winter")
  
