@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Graphics/circle.png" type="Texture" id=1]
 [ext_resource path="res://Graphics/red-berry.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Graphics/green-mint.png" type="Texture" id=7]
 [ext_resource path="res://Graphics/blue-berry.png" type="Texture" id=8]
 [ext_resource path="res://Graphics/purple-flower.png" type="Texture" id=9]
+[ext_resource path="res://HUD.gd" type="Script" id=10]
 
 [sub_resource type="TileSet" id=1]
 2/name = "triangle.png 2"
@@ -203,5 +204,90 @@ format = 1
 [node name="SlimeTick" type="Timer" parent="."]
 wait_time = 0.2
 autostart = true
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource( 10 )
+
+[node name="TimeBox" type="MarginContainer" parent="HUD"]
+anchor_left = 0.848
+anchor_right = 1.008
+anchor_bottom = 0.545
+margin_left = 19.144
+margin_top = 39.0
+margin_right = -30.376
+margin_bottom = -323.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/TimeBox"]
+margin_right = 178.0
+margin_bottom = 74.0
+alignment = 2
+
+[node name="Label" type="Label" parent="HUD/TimeBox/HBoxContainer"]
+margin_left = 166.0
+margin_top = 30.0
+margin_right = 166.0
+margin_bottom = 44.0
+
+[node name="Time" type="Label" parent="HUD/TimeBox/HBoxContainer"]
+margin_left = 170.0
+margin_top = 30.0
+margin_right = 178.0
+margin_bottom = 44.0
+text = "1"
+
+[node name="Message" type="Label" parent="HUD/TimeBox"]
+margin_top = 30.0
+margin_right = 178.0
+margin_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Time survived:"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="SeasonBox" type="MarginContainer" parent="HUD"]
+anchor_left = 0.848
+anchor_right = 1.008
+anchor_bottom = 0.545
+margin_left = 18.144
+margin_top = 101.0
+margin_right = -31.376
+margin_bottom = -269.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/SeasonBox"]
+margin_right = 178.0
+margin_bottom = 66.0
+alignment = 2
+
+[node name="Label" type="Label" parent="HUD/SeasonBox/HBoxContainer"]
+margin_left = 135.0
+margin_top = 26.0
+margin_right = 135.0
+margin_bottom = 40.0
+
+[node name="Season" type="Label" parent="HUD/SeasonBox/HBoxContainer"]
+margin_left = 139.0
+margin_top = 26.0
+margin_right = 178.0
+margin_bottom = 40.0
+text = "Spring"
+
+[node name="Message" type="Label" parent="HUD/SeasonBox"]
+margin_top = 26.0
+margin_right = 178.0
+margin_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Season:"
+align = 1
+valign = 1
+clip_text = true
 
 [connection signal="timeout" from="SlimeTick" to="." method="_on_SlimeTick_timeout"]
