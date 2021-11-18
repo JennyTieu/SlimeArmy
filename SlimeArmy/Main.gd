@@ -12,7 +12,8 @@ var time_new = 0
 var reset = 0
 var time_reset=0
 var season = 0
-var season_x =0
+var season_x = 0
+var health = 3
 
 func _ready():
 	init_plant()
@@ -25,16 +26,13 @@ func place_plant():
 	var y = randi() % 20
 	return Vector2(x,y)
 		
-		
 func draw_plant():
 	for i in range(plant_pos.size()):
 		$SlimePlant.set_cell(plant_pos[i].x, plant_pos[i].y, plant_pic[i])
 
-
 func draw_slime():
 	for block in slime_body:
 		$SlimePlant.set_cell(block.x,block.y, SLIME, false, false, false,Vector2(0,0))
-
 
 func move_slime():
 	if add_plant:
@@ -85,7 +83,31 @@ func check_plant_farmed():
 	for i in range(plant_pos.size()):
 		if plant_pos[i] == slime_body[0]:
 			plant_pos[i] = place_plant()
-			add_plant = true
+			
+			if season == 0:
+				if (plant_pic[i] > 5 && plant_pic[i] < 6) || (plant_pic[i] > 8 && plant_pic[i] < 9):
+					update_score(slime_body.size())
+					add_plant = true
+				else:
+					update_score(slime_body.size())
+			elif season == 1:
+				if (plant_pic[i] > 4 && plant_pic[i] < 5) || (plant_pic[i] > 6 && plant_pic[i] < 7):
+					update_score(slime_body.size())
+					add_plant = true
+				else:
+					update_score(slime_body.size())
+			elif season == 2:
+				if (plant_pic[i] > 9 && plant_pic[i] < 10) || (plant_pic[i] > 8 && plant_pic[i] < 9):
+					update_score(slime_body.size())
+					add_plant = true
+				else:
+					update_score(slime_body.size())
+			elif season == 3:
+				if (plant_pic[i] > 7 && plant_pic[i] < 8) || (plant_pic[i] > 6 && plant_pic[i] < 7):
+					update_score(slime_body.size())
+					add_plant = true
+				else:
+					update_score(slime_body.size())
 		
 func check_game_over():
 	var head = slime_body[0]
@@ -95,12 +117,16 @@ func check_game_over():
 	#hits army
 	for block in slime_body.slice(1,slime_body.size()-1):
 		if block == head:
-			reset()
+			update_health(health-1)
+	if health == 0:
+		reset()
 	
 func reset():
 	slime_body = [Vector2(5,10)]
 	slime_direction = Vector2(1,0)
 	timer_reset()
+	update_score(0)
+	update_health(3)
 
 func _on_SlimeTick_timeout():
 	move_slime()
@@ -118,8 +144,7 @@ func init_plant():
 	for i in range (10):
 		plant_pos.append(place_plant())
 		var x = rand_range(4,10) #range: const der tiles
-		plant_pic.append(x) 
-
+		plant_pic.append(x)
 
 #TODO:
 #Zeitlimit für season, vlt iwo anzeigen lassen
@@ -130,7 +155,7 @@ func timer():
 		time_passed = time_new
 	#	einkommentieren damit time in konsole
 		$HUD.update_time(time_passed)
-		print(time_passed)
+		#print(time_passed)
 
 func timer_reset():
 	reset+=1
@@ -151,4 +176,21 @@ func check_season():
 				1: $HUD.update_season("Summer")
 				2: $HUD.update_season("Autumn")
 				3: $HUD.update_season("Winter")
+		if season == 0:
+			update_season_plants("res://Graphics/blue-berry.png", "res://Graphics/purple-flower.png")
+		elif season == 1:
+			update_season_plants("res://Graphics/blue-flower.png", "res://Graphics/red-berry.png")
+		elif season == 2:
+			update_season_plants("res://Graphics/purple-flower.png", "res://Graphics/yellow-flower.png")
+		elif season == 3:
+			update_season_plants("res://Graphics/green-mint.png", "res://Graphics/blue-flower.png")
+
+func update_score(slime_length):
+	$HUD/Score/Score.text = str(slime_length)
  
+func update_health(health):
+	$HUD/Health/Health.text = str(health)
+
+func update_season_plants(seasonPlant1, seasonPlant2):
+	$HUD/Season/SeasonSprite1.texture = load(seasonPlant1)
+	$HUD/Season/SeasonSprite2.texture = load(seasonPlant2)

@@ -290,4 +290,72 @@ align = 1
 valign = 1
 clip_text = true
 
+[node name="Score" type="Node" parent="HUD"]
+
+[node name="ScoreText" type="Label" parent="HUD/Score"]
+margin_left = 1290.9
+margin_top = 181.607
+margin_right = 1343.9
+margin_bottom = 205.607
+text = "Score:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="HUD/Score"]
+margin_left = 1359.0
+margin_top = 181.607
+margin_right = 1403.0
+margin_bottom = 205.607
+text = "0"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Health" type="Node" parent="HUD"]
+
+[node name="HealthText" type="Label" parent="HUD/Health"]
+margin_left = 1290.9
+margin_top = 226.0
+margin_right = 1330.9
+margin_bottom = 240.0
+text = "Health:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Health" type="Label" parent="HUD/Health"]
+margin_left = 1363.0
+margin_top = 226.0
+margin_right = 1403.0
+margin_bottom = 240.0
+text = "3"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Season" type="Node" parent="HUD"]
+
+[node name="SeasonalPlants" type="Label" parent="HUD/Season"]
+margin_left = 1247.98
+margin_top = 367.0
+margin_right = 1392.98
+margin_bottom = 390.0
+text = "Harvest these plants:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SeasonSprite1" type="Sprite" parent="HUD/Season"]
+position = Vector2( 1320.9, 440.5 )
+scale = Vector2( 1.925, 1.925 )
+texture = ExtResource( 8 )
+
+[node name="SeasonSprite2" type="Sprite" parent="HUD/Season"]
+position = Vector2( 1320.9, 535.5 )
+scale = Vector2( 2.04004, 2.025 )
+texture = ExtResource( 9 )
+
 [connection signal="timeout" from="SlimeTick" to="." method="_on_SlimeTick_timeout"]
