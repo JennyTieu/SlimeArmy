@@ -19,6 +19,7 @@ func _ready():
 	init_plant()
 	draw_plant()
 	draw_slime()
+	update_health(health)
 	
 func place_plant():
 	randomize()
