@@ -98,21 +98,21 @@ func check_plant_farmed():
 					add_plant = true
 				else:
 					health = health - 1
-					update_health(health-1)
+					update_health(health)
 			elif season == 2:
 				if (plant_pic[i] > 9 && plant_pic[i] < 10) || (plant_pic[i] > 8 && plant_pic[i] < 9):
 					update_score(slime_body.size())
 					add_plant = true
 				else:
 					health = health - 1
-					update_health(health-1)
+					update_health(health)
 			elif season == 3:
 				if (plant_pic[i] > 7 && plant_pic[i] < 8) || (plant_pic[i] > 6 && plant_pic[i] < 7):
 					update_score(slime_body.size())
 					add_plant = true
 				else:
 					health = health - 1
-					update_health(health - 1)
+					update_health(health)
 		
 func check_game_over():
 	var head = slime_body[0]
