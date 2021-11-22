@@ -89,24 +89,28 @@ func check_plant_farmed():
 					update_score(slime_body.size())
 					add_plant = true
 				else:
-					update_health(health-1)
+					health = health - 1
+					update_health(health)
 			elif season == 1:
 				if (plant_pic[i] > 4 && plant_pic[i] < 5) || (plant_pic[i] > 6 && plant_pic[i] < 7):
 					update_score(slime_body.size())
 					add_plant = true
 				else:
+					health = health - 1
 					update_health(health-1)
 			elif season == 2:
 				if (plant_pic[i] > 9 && plant_pic[i] < 10) || (plant_pic[i] > 8 && plant_pic[i] < 9):
 					update_score(slime_body.size())
 					add_plant = true
 				else:
+					health = health - 1
 					update_health(health-1)
 			elif season == 3:
 				if (plant_pic[i] > 7 && plant_pic[i] < 8) || (plant_pic[i] > 6 && plant_pic[i] < 7):
 					update_score(slime_body.size())
 					add_plant = true
 				else:
+					health = health - 1
 					update_health(health - 1)
 		
 func check_game_over():
@@ -126,7 +130,8 @@ func reset():
 	slime_direction = Vector2(1,0)
 	timer_reset()
 	update_score(0)
-	update_health(3)
+	health = 3
+	update_health(health)
 
 func _on_SlimeTick_timeout():
 	move_slime()
