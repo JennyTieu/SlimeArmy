@@ -89,25 +89,25 @@ func check_plant_farmed():
 					update_score(slime_body.size())
 					add_plant = true
 				else:
-					update_score(slime_body.size())
+					update_health(health-1)
 			elif season == 1:
 				if (plant_pic[i] > 4 && plant_pic[i] < 5) || (plant_pic[i] > 6 && plant_pic[i] < 7):
 					update_score(slime_body.size())
 					add_plant = true
 				else:
-					update_score(slime_body.size())
+					update_health(health-1)
 			elif season == 2:
 				if (plant_pic[i] > 9 && plant_pic[i] < 10) || (plant_pic[i] > 8 && plant_pic[i] < 9):
 					update_score(slime_body.size())
 					add_plant = true
 				else:
-					update_score(slime_body.size())
+					update_health(health-1)
 			elif season == 3:
 				if (plant_pic[i] > 7 && plant_pic[i] < 8) || (plant_pic[i] > 6 && plant_pic[i] < 7):
 					update_score(slime_body.size())
 					add_plant = true
 				else:
-					update_score(slime_body.size())
+					update_health(health - 1)
 		
 func check_game_over():
 	var head = slime_body[0]
@@ -117,7 +117,7 @@ func check_game_over():
 	#hits army
 	for block in slime_body.slice(1,slime_body.size()-1):
 		if block == head:
-			update_health(health-1)
+			reset()
 	if health == 0:
 		reset()
 	
@@ -188,8 +188,8 @@ func check_season():
 func update_score(slime_length):
 	$HUD/Score/Score.text = str(slime_length)
  
-func update_health(health):
-	$HUD/Health/Health.text = str(health)
+func update_health(slime_health):
+	$HUD/Health/Health.text = str(slime_health)
 
 func update_season_plants(seasonPlant1, seasonPlant2):
 	$HUD/Season/SeasonSprite1.texture = load(seasonPlant1)
