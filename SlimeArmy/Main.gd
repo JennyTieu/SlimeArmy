@@ -14,6 +14,7 @@ var time_reset=0
 var season = 0
 var season_x = 0
 var health = 3
+var plant_time = 0
 
 func _ready():
 	init_plant()
@@ -133,9 +134,11 @@ func reset():
 	update_score(0)
 	health = 3
 	update_health(health)
+	init_plant()
 
 func _on_SlimeTick_timeout():
 	move_slime()
+	check_plant()
 	draw_plant()
 	draw_slime()
 	check_plant_farmed()
@@ -147,14 +150,31 @@ func _process(delta):
 
 #Funktion zum initialisieren von mehreren plants + ihren Bildern
 func init_plant():
+	for y in range(plant_pos.size()):
+		delete_tiles(y)
+	plant_pos.clear()
+	plant_pic.clear()
+	
 	for i in range (10):
 		plant_pos.append(place_plant())
 		var x = rand_range(4,10) #range: const der tiles
 		plant_pic.append(x)
 
-#TODO:
-#Zeitlimit für season, vlt iwo anzeigen lassen
-#Timer hat Probleme wenn man schnell hintereinander stirbt
+#löscht ab und zu alte plants und erstellt neue
+func check_plant():
+	if plant_time < time_passed:
+		plant_time = time_passed
+		if plant_time % 2 ==0:
+			plant_pos.append(place_plant())
+			var y = rand_range(4,10) 
+			plant_pic.append(y)
+		if plant_time % 4 ==0:
+			var x = rand_range(0,plant_pos.size())
+			delete_tiles(plant_pic[x])
+			plant_pos.remove(x)
+			plant_pic.remove(x)
+		
+
 func timer():
 	time_new = (OS.get_ticks_msec()/1000-1) - (time_reset*reset)
 	if time_passed < time_new:
@@ -175,7 +195,7 @@ func check_season():
 	if  season_x < time_passed:
 		season_x = time_passed
 		if season_x % 10 == 0:
-			season=season+1%4
+			season=(season+1) %4
 			#print("season changed")
 			match season:
 				0: $HUD.update_season("Spring")
