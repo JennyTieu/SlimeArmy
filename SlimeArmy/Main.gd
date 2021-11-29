@@ -118,7 +118,7 @@ func check_plant_farmed():
 func check_game_over():
 	var head = slime_body[0]
 	#leaves screen
-	if head.x > 28 or head.x < 0 or head.y < 0 or head.y > 20:
+	if head.x > 29 or head.x < 0 or head.y < 0 or head.y > 20:
 		reset()
 	#hits army
 	for block in slime_body.slice(1,slime_body.size()-1):
