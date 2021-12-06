@@ -204,12 +204,16 @@ func check_season():
 				3: $HUD.update_season("Winter")
 		if season == 0:
 			update_season_plants("res://Graphics/blue-berry.png", "res://Graphics/purple-flower.png")
+			$TextureRect.texture = load("res://Graphics/spring.png")
 		elif season == 1:
 			update_season_plants("res://Graphics/blue-flower.png", "res://Graphics/red-berry.png")
+			$TextureRect.texture = load("res://Graphics/grass.png")
 		elif season == 2:
 			update_season_plants("res://Graphics/purple-flower.png", "res://Graphics/yellow-flower.png")
+			$TextureRect.texture = load("res://Graphics/fall.png")
 		elif season == 3:
 			update_season_plants("res://Graphics/green-mint.png", "res://Graphics/blue-flower.png")
+			$TextureRect.texture = load("res://Graphics/snow.png")
 
 func update_score(slime_length):
 	$HUD/Score/Score.text = str(slime_length)
