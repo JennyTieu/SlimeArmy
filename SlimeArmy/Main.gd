@@ -180,7 +180,7 @@ func timer():
 	if time_passed < time_new:
 		time_passed = time_new
 	#	einkommentieren damit time in konsole
-		$HUD.update_time(time_passed)
+		#$HUD.update_time(time_passed)
 		#print(time_passed)
 
 func timer_reset():
@@ -194,33 +194,45 @@ func timer_reset():
 func check_season():
 	if  season_x < time_passed:
 		season_x = time_passed
-		if season_x % 10 == 0:
+		if season_x % 12 == 0:
 			season=(season+1) %4
 			#print("season changed")
-			match season:
-				0: $HUD.update_season("Spring")
-				1: $HUD.update_season("Summer")
-				2: $HUD.update_season("Autumn")
-				3: $HUD.update_season("Winter")
 		if season == 0:
-			update_season_plants("res://Graphics/blue-berry.png", "res://Graphics/purple-flower.png")
+			update_season_plants("res://Graphics/blue-berry.png", "res://Graphics/purple-flower.png","res://Graphics/spring_icon.png")
 			$TextureRect.texture = load("res://Graphics/spring.png")
+			
 		elif season == 1:
-			update_season_plants("res://Graphics/blue-flower.png", "res://Graphics/red-berry.png")
+			update_season_plants("res://Graphics/blue-flower.png", "res://Graphics/red-berry.png", "res://Graphics/summer_icon.png")
 			$TextureRect.texture = load("res://Graphics/grass.png")
 		elif season == 2:
-			update_season_plants("res://Graphics/purple-flower.png", "res://Graphics/yellow-flower.png")
+			update_season_plants("res://Graphics/purple-flower.png", "res://Graphics/yellow-flower.png","res://Graphics/fall_icon.png")
 			$TextureRect.texture = load("res://Graphics/fall.png")
 		elif season == 3:
-			update_season_plants("res://Graphics/green-mint.png", "res://Graphics/blue-flower.png")
+			update_season_plants("res://Graphics/green-mint.png", "res://Graphics/blue-flower.png", "res://Graphics/winter_icon.png")
 			$TextureRect.texture = load("res://Graphics/snow.png")
 
 func update_score(slime_length):
 	$HUD/Score/Score.text = str(slime_length)
  
 func update_health(slime_health):
-	$HUD/Health/Health.text = str(slime_health)
+	if health == 3 :
+		$HUD/Health/Sprite1.visible = true;
+		$HUD/Health/Sprite2.visible = true;
+		$HUD/Health/Sprite3.visible = true;
+	elif health == 2:
+		$HUD/Health/Sprite1.visible = true;
+		$HUD/Health/Sprite2.visible = true;
+		$HUD/Health/Sprite3.visible = false;
+	elif health == 1:
+		$HUD/Health/Sprite1.visible = true;
+		$HUD/Health/Sprite2.visible = false;
+		$HUD/Health/Sprite3.visible = false;
+	elif health == 0:
+		$HUD/Health/Sprite1.visible = false;
+		$HUD/Health/Sprite2.visible = false;
+		$HUD/Health/Sprite3.visible = false;
 
-func update_season_plants(seasonPlant1, seasonPlant2):
+func update_season_plants(seasonPlant1, seasonPlant2, seasonIcon):
 	$HUD/Season/SeasonSprite1.texture = load(seasonPlant1)
 	$HUD/Season/SeasonSprite2.texture = load(seasonPlant2)
+	$HUD/Season/SeasonSprite3.texture = load(seasonIcon)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Graphics/circle.png" type="Texture" id=1]
 [ext_resource path="res://Graphics/red-berry.png" type="Texture" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://Graphics/blue-berry.png" type="Texture" id=8]
 [ext_resource path="res://Graphics/purple-flower.png" type="Texture" id=9]
 [ext_resource path="res://HUD.gd" type="Script" id=10]
+[ext_resource path="res://Graphics/spring_icon.png" type="Texture" id=11]
+[ext_resource path="res://Graphics/heart.png" type="Texture" id=12]
 
 [sub_resource type="TileSet" id=1]
 2/name = "triangle.png 2"
@@ -212,101 +214,31 @@ script = ExtResource( 10 )
 anchor_left = 0.848
 anchor_right = 1.008
 anchor_bottom = 0.545
-margin_left = 19.144
-margin_top = 39.0
-margin_right = -30.376
-margin_bottom = -323.0
+margin_left = 16.1709
+margin_top = 36.6216
+margin_right = -33.3491
+margin_bottom = -325.378
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HUD/TimeBox"]
-margin_right = 178.0
-margin_bottom = 74.0
-alignment = 2
-
-[node name="Label" type="Label" parent="HUD/TimeBox/HBoxContainer"]
-margin_left = 166.0
-margin_top = 30.0
-margin_right = 166.0
-margin_bottom = 44.0
-
-[node name="Time" type="Label" parent="HUD/TimeBox/HBoxContainer"]
-margin_left = 170.0
-margin_top = 30.0
-margin_right = 178.0
-margin_bottom = 44.0
-text = "1"
-
-[node name="Message" type="Label" parent="HUD/TimeBox"]
-margin_top = 30.0
-margin_right = 178.0
-margin_bottom = 44.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Time survived:"
-align = 1
-valign = 1
-clip_text = true
-
-[node name="SeasonBox" type="MarginContainer" parent="HUD"]
-anchor_left = 0.848
-anchor_right = 1.008
-anchor_bottom = 0.545
-margin_left = 18.144
-margin_top = 101.0
-margin_right = -31.376
-margin_bottom = -269.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HUD/SeasonBox"]
-margin_right = 178.0
-margin_bottom = 66.0
-alignment = 2
-
-[node name="Label" type="Label" parent="HUD/SeasonBox/HBoxContainer"]
-margin_left = 135.0
-margin_top = 26.0
-margin_right = 135.0
-margin_bottom = 40.0
-
-[node name="Season" type="Label" parent="HUD/SeasonBox/HBoxContainer"]
-margin_left = 139.0
-margin_top = 26.0
-margin_right = 178.0
-margin_bottom = 40.0
-text = "Spring"
-
-[node name="Message" type="Label" parent="HUD/SeasonBox"]
-margin_top = 26.0
-margin_right = 178.0
-margin_bottom = 40.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Season:"
-align = 1
-valign = 1
-clip_text = true
 
 [node name="Score" type="Node" parent="HUD"]
 
 [node name="ScoreText" type="Label" parent="HUD/Score"]
-margin_left = 1290.9
-margin_top = 181.607
-margin_right = 1343.9
-margin_bottom = 205.607
+margin_left = 1236.3
+margin_top = 252.181
+margin_right = 1289.3
+margin_bottom = 276.181
 text = "Score:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Score" type="Label" parent="HUD/Score"]
-margin_left = 1359.0
-margin_top = 181.607
-margin_right = 1403.0
-margin_bottom = 205.607
+margin_left = 1310.8
+margin_top = 252.536
+margin_right = 1354.8
+margin_bottom = 276.536
 text = "0"
 align = 2
 __meta__ = {
@@ -315,26 +247,20 @@ __meta__ = {
 
 [node name="Health" type="Node" parent="HUD"]
 
-[node name="HealthText" type="Label" parent="HUD/Health"]
-margin_left = 1290.9
-margin_top = 226.0
-margin_right = 1330.9
-margin_bottom = 240.0
-text = "Health:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Sprite1" type="Sprite" parent="HUD/Health"]
+position = Vector2( 1252.58, 317.28 )
+scale = Vector2( 0.101599, 0.0969692 )
+texture = ExtResource( 12 )
 
-[node name="Health" type="Label" parent="HUD/Health"]
-margin_left = 1363.0
-margin_top = 226.0
-margin_right = 1403.0
-margin_bottom = 240.0
-text = "3"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Sprite2" type="Sprite" parent="HUD/Health"]
+position = Vector2( 1312.23, 317.125 )
+scale = Vector2( 0.101599, 0.0969692 )
+texture = ExtResource( 12 )
+
+[node name="Sprite3" type="Sprite" parent="HUD/Health"]
+position = Vector2( 1372.49, 317.125 )
+scale = Vector2( 0.101599, 0.0969692 )
+texture = ExtResource( 12 )
 
 [node name="Season" type="Node" parent="HUD"]
 
@@ -357,5 +283,10 @@ texture = ExtResource( 8 )
 position = Vector2( 1320.9, 535.5 )
 scale = Vector2( 2.04004, 2.025 )
 texture = ExtResource( 9 )
+
+[node name="SeasonSprite3" type="Sprite" parent="HUD/Season"]
+position = Vector2( 1313.7, 120.321 )
+scale = Vector2( 0.387063, 0.393612 )
+texture = ExtResource( 11 )
 
 [connection signal="timeout" from="SlimeTick" to="." method="_on_SlimeTick_timeout"]
