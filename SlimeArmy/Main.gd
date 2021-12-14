@@ -166,7 +166,7 @@ func check_plant():
 		plant_time = time_passed
 		if plant_time % 2 ==0:
 			plant_pos.append(place_plant())
-			var y = rand_range(4,10) 
+			var y = rand_range(0,6) 
 			plant_pic.append(y)
 		if plant_time % 4 ==0:
 			var x = rand_range(0,plant_pos.size())
