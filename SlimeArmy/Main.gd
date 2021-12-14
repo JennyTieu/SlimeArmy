@@ -1,6 +1,6 @@
 extends Node2D
 
-const SLIME = 3
+const SLIME = 6
 const PLANT = 4
 var plant_pos = []
 var plant_pic = []
@@ -87,28 +87,28 @@ func check_plant_farmed():
 			plant_pos[i] = place_plant()
 			
 			if season == 0:
-				if (plant_pic[i] > 5 && plant_pic[i] < 6) || (plant_pic[i] > 8 && plant_pic[i] < 9):
+				if (plant_pic[i] > 0 && plant_pic[i] < 1) || (plant_pic[i] > 3 && plant_pic[i] < 4):
 					update_score(slime_body.size())
 					add_plant = true
 				else:
 					health = health - 1
 					update_health(health)
 			elif season == 1:
-				if (plant_pic[i] > 4 && plant_pic[i] < 5) || (plant_pic[i] > 6 && plant_pic[i] < 7):
+				if (plant_pic[i] > 1 && plant_pic[i] < 2) || (plant_pic[i] > 4 && plant_pic[i] < 5):
 					update_score(slime_body.size())
 					add_plant = true
 				else:
 					health = health - 1
 					update_health(health)
 			elif season == 2:
-				if (plant_pic[i] > 9 && plant_pic[i] < 10) || (plant_pic[i] > 8 && plant_pic[i] < 9):
+				if (plant_pic[i] > 3 && plant_pic[i] < 4) || (plant_pic[i] > 5 && plant_pic[i] < 6):
 					update_score(slime_body.size())
 					add_plant = true
 				else:
 					health = health - 1
 					update_health(health)
 			elif season == 3:
-				if (plant_pic[i] > 7 && plant_pic[i] < 8) || (plant_pic[i] > 6 && plant_pic[i] < 7):
+				if (plant_pic[i] > 2 && plant_pic[i] < 3) || (plant_pic[i] > 1 && plant_pic[i] < 2):
 					update_score(slime_body.size())
 					add_plant = true
 				else:
@@ -157,7 +157,7 @@ func init_plant():
 	
 	for i in range (10):
 		plant_pos.append(place_plant())
-		var x = rand_range(4,10) #range: const der tiles
+		var x = rand_range(0,6) #range: const der tiles
 		plant_pic.append(x)
 
 #löscht ab und zu alte plants und erstellt neue
@@ -198,17 +198,17 @@ func check_season():
 			season=(season+1) %4
 			#print("season changed")
 		if season == 0:
-			update_season_plants("res://Graphics/blue-berry.png", "res://Graphics/purple-flower.png","res://Graphics/spring_icon.png")
+			update_season_plants("res://Graphics/blue_berry.png", "res://Graphics/purple_flower.png","res://Graphics/spring_icon.png")
 			$TextureRect.texture = load("res://Graphics/spring.png")
 			
 		elif season == 1:
-			update_season_plants("res://Graphics/blue-flower.png", "res://Graphics/red-berry.png", "res://Graphics/summer_icon.png")
+			update_season_plants("res://Graphics/blue_flower.png", "res://Graphics/red_berry.png", "res://Graphics/summer_icon.png")
 			$TextureRect.texture = load("res://Graphics/grass.png")
 		elif season == 2:
-			update_season_plants("res://Graphics/purple-flower.png", "res://Graphics/yellow-flower.png","res://Graphics/fall_icon.png")
+			update_season_plants("res://Graphics/purple_flower.png", "res://Graphics/yellow_flower.png","res://Graphics/fall_icon.png")
 			$TextureRect.texture = load("res://Graphics/fall.png")
 		elif season == 3:
-			update_season_plants("res://Graphics/green-mint.png", "res://Graphics/blue-flower.png", "res://Graphics/winter_icon.png")
+			update_season_plants("res://Graphics/mint.png", "res://Graphics/blue_flower.png", "res://Graphics/winter_icon.png")
 			$TextureRect.texture = load("res://Graphics/snow.png")
 
 func update_score(slime_length):
