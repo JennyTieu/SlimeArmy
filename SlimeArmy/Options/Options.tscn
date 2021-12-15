@@ -1,0 +1,137 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Options/Options.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/Font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Fonts/SunnyspellsRegular-MV9ze.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://Fonts/FontGreen.tres" type="DynamicFont" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 35
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 70
+font_data = ExtResource( 3 )
+
+[node name="Node" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Options" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_top = 30.0
+margin_right = -30.0
+margin_bottom = -30.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Headline" type="Label" parent="Options"]
+margin_right = 1362.0
+margin_bottom = 368.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color_shadow = Color( 0.376471, 0.65098, 0.2, 1 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
+text = "Options"
+align = 1
+uppercase = true
+
+[node name="WindowMode" type="Node" parent="Options"]
+
+[node name="OptionButton" type="OptionButton" parent="Options/WindowMode"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -351.73
+margin_top = -91.468
+margin_right = 48.27
+margin_bottom = -41.468
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+text = "Windowed"
+align = 1
+items = [ "Windowed", null, false, 0, null, "Fullscreen", null, false, 1, null ]
+selected = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Options/WindowMode/OptionButton"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -236.174
+margin_top = -16.5
+margin_right = -54.1737
+margin_bottom = 16.5
+custom_fonts/font = ExtResource( 2 )
+text = "Display Mode"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sound" type="Node" parent="Options"]
+
+[node name="HSlider" type="HSlider" parent="Options/Sound"]
+margin_left = 121.414
+margin_top = 403.794
+margin_right = 1303.41
+margin_bottom = 453.794
+rect_min_size = Vector2( 0, 50 )
+min_value = -80.0
+max_value = 0.0
+value = -40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Options/Sound/HSlider"]
+margin_top = 54.0
+margin_right = 1182.0
+margin_bottom = 87.0
+custom_fonts/font = ExtResource( 2 )
+text = "volume"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buttons" type="VBoxContainer" parent="Options"]
+margin_top = 372.0
+margin_right = 1362.0
+margin_bottom = 740.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Back" type="Button" parent="Options/Buttons"]
+margin_top = 144.0
+margin_right = 1362.0
+margin_bottom = 224.0
+rect_min_size = Vector2( 360, 80 )
+flat = true
+
+[node name="Label" type="Label" parent="Options/Buttons/Back"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_shadow = Color( 0.376471, 0.65098, 0.2, 1 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
+text = "Back"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="item_selected" from="Options/WindowMode/OptionButton" to="." method="_on_OptionButton_item_selected"]
+[connection signal="value_changed" from="Options/Sound/HSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="pressed" from="Options/Buttons/Back" to="." method="_on_Back_pressed"]
