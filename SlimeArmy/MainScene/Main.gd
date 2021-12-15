@@ -135,6 +135,7 @@ func reset():
 	health = 3
 	update_health(health)
 	init_plant()
+	get_tree().change_scene("res://FinalScore/FinalScore.tscn")
 
 func _on_SlimeTick_timeout():
 	move_slime()
