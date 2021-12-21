@@ -1,6 +1,6 @@
 extends Node2D
 
-const SLIME = 6
+const SLIME = 7
 const PLANT = 4
 var plant_pos = []
 var plant_pic = []
@@ -33,8 +33,60 @@ func draw_plant():
 		$SlimePlant.set_cell(plant_pos[i].x, plant_pos[i].y, plant_pic[i])
 
 func draw_slime():
-	for block in slime_body:
-		$SlimePlant.set_cell(block.x,block.y, SLIME, false, false, false,Vector2(0,0))
+	for block_index in slime_body.size():
+		var block = slime_body[block_index]
+		if block_index==0 && slime_body.size()==1:
+			if slime_direction == Vector2(-1,0):
+				$SlimePlant.set_cell(block.x,block.y, SLIME, false, false, false,Vector2(0,1))
+			if slime_direction == Vector2(1,0):
+				$SlimePlant.set_cell(block.x,block.y, SLIME, false, false, false,Vector2(1,1))
+			if slime_direction == Vector2(0,-1):
+				$SlimePlant.set_cell(block.x,block.y, SLIME, false, false, false,Vector2(0,0))
+			if slime_direction == Vector2(0,1):
+				$SlimePlant.set_cell(block.x,block.y, SLIME, false, false, false,Vector2(1,0))
+		elif block_index==0 && slime_body.size()!=1:
+			var head_dir = relation2(slime_body[0],slime_body[1])
+			if head_dir == 'right':
+				$SlimePlant.set_cell(block.x,block.y, SLIME, false, false, false,Vector2(0,1))
+			if head_dir == 'left':
+				$SlimePlant.set_cell(block.x,block.y, SLIME, false, false, false,Vector2(1,1))
+			if head_dir == 'top':
+				$SlimePlant.set_cell(block.x,block.y, SLIME, false, false, false,Vector2(1,0))
+			if head_dir == 'bottom':
+				$SlimePlant.set_cell(block.x,block.y, SLIME, false, false, false,Vector2(0,0))
+		elif block_index==slime_body.size()-1 && slime_body.size()!=1:
+			var head_dir = relation2(slime_body[-1],slime_body[-2])
+			if head_dir == 'right':
+				$SlimePlant.set_cell(block.x,block.y, SLIME, false, false, false,Vector2(1,1))
+			if head_dir == 'left':
+				$SlimePlant.set_cell(block.x,block.y, SLIME, false, false, false,Vector2(0,1))
+			if head_dir == 'top':
+				$SlimePlant.set_cell(block.x,block.y, SLIME, false, false, false,Vector2(0,0))
+			if head_dir == 'bottom':
+				$SlimePlant.set_cell(block.x,block.y, SLIME, false, false, false,Vector2(1,0))
+		else:
+			var previous_block = slime_body[block_index +1] - block
+			var next_block =slime_body[block_index -1] - block
+			
+			if previous_block.x == 1 :
+				$SlimePlant.set_cell(block.x,block.y, SLIME, false, false, false,Vector2(0,1))
+			if previous_block.x == -1:
+				$SlimePlant.set_cell(block.x,block.y, SLIME, false, false, false,Vector2(1,1))
+			if previous_block.y == 1:
+				$SlimePlant.set_cell(block.x,block.y, SLIME, false, false, false,Vector2(0,0))
+			if previous_block.y == -1:
+				$SlimePlant.set_cell(block.x,block.y, SLIME, false, false, false,Vector2(1,0))
+			
+		
+		
+func relation2(first_block: Vector2, second_block:Vector2):
+	var block_relation = second_block - first_block
+	if block_relation == Vector2(-1,0): return 'left'
+	if block_relation == Vector2(1,0): return 'right'
+	if block_relation == Vector2(0,1): return 'bottom'
+	if block_relation == Vector2(0,-1): return 'top'
+	
+
 
 func move_slime():
 	if add_plant:
