@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://TitleScreen/TitleScreen.gd" type="Script" id=1]
 [ext_resource path="res://Graphics/slimearmymenu.png" type="Texture" id=2]
 [ext_resource path="res://Fonts/SunnyspellsRegular-MV9ze.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://Sounds/mixkit-happy-spring-535 (online-audio-converter.com).wav" type="AudioStream" id=4]
+[ext_resource path="res://Sounds/button.wav" type="AudioStream" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
@@ -31,8 +33,7 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="Buttons" type="VBoxContainer" parent="Menu/CenterRow"]
-margin_left = 50.0
-margin_top = 500.0
+margin_top = 552.0
 margin_right = 360.0
 margin_bottom = 800.0
 size_flags_horizontal = 2
@@ -40,9 +41,8 @@ size_flags_vertical = 8
 alignment = 1
 
 [node name="NewGame" type="Button" parent="Menu/CenterRow/Buttons"]
-margin_top = 26.0
 margin_right = 360.0
-margin_bottom = 106.0
+margin_bottom = 80.0
 rect_min_size = Vector2( 360, 80 )
 size_flags_horizontal = 4
 flat = true
@@ -62,9 +62,9 @@ __meta__ = {
 }
 
 [node name="Options" type="Button" parent="Menu/CenterRow/Buttons"]
-margin_top = 110.0
+margin_top = 84.0
 margin_right = 360.0
-margin_bottom = 190.0
+margin_bottom = 164.0
 rect_min_size = Vector2( 360, 80 )
 size_flags_horizontal = 4
 flat = true
@@ -84,9 +84,9 @@ __meta__ = {
 }
 
 [node name="Quit" type="Button" parent="Menu/CenterRow/Buttons"]
-margin_top = 194.0
+margin_top = 168.0
 margin_right = 360.0
-margin_bottom = 274.0
+margin_bottom = 248.0
 rect_min_size = Vector2( 360, 80 )
 size_flags_horizontal = 4
 flat = true
@@ -104,6 +104,16 @@ uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Sounds" type="AudioStreamPlayer" parent="."]
+
+[node name="Button" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 5 )
+volume_db = -30.0
+
+[node name="Music" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 4 )
+volume_db = -40.0
 
 [connection signal="pressed" from="Menu/CenterRow/Buttons/NewGame" to="." method="_on_NewGame_pressed"]
 [connection signal="pressed" from="Menu/CenterRow/Buttons/Options" to="." method="_on_Options_pressed"]
