@@ -5,7 +5,7 @@
 [ext_resource path="res://Fonts/SunnyspellsRegular-MV9ze.otf" type="DynamicFontData" id=3]
 [ext_resource path="res://Sounds/button.wav" type="AudioStream" id=4]
 [ext_resource path="res://Sounds/score.wav" type="AudioStream" id=5]
-[ext_resource path="res://Graphics/yellow_bg (4).jpg" type="Texture" id=6]
+[ext_resource path="res://Graphics/sidebar.jpg" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
