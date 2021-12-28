@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Graphics/circle.png" type="Texture" id=1]
 [ext_resource path="res://Graphics/GamePlants/purple_flower40x40.png" type="Texture" id=2]
@@ -15,6 +15,12 @@
 [ext_resource path="res://Graphics/GamePlants/blue_flower40x40.png" type="Texture" id=13]
 [ext_resource path="res://Graphics/GamePlants/yellow_flower40x40.png" type="Texture" id=14]
 [ext_resource path="res://Graphics/spritesheet.png" type="Texture" id=15]
+[ext_resource path="res://Sounds/mixkit-games-worldbeat-466.wav" type="AudioStream" id=16]
+[ext_resource path="res://Sounds/countdown.wav" type="AudioStream" id=17]
+[ext_resource path="res://Sounds/eating.wav" type="AudioStream" id=18]
+[ext_resource path="res://Sounds/hp.wav" type="AudioStream" id=19]
+[ext_resource path="res://Graphics/yellow_bg (4).jpg" type="Texture" id=20]
+[ext_resource path="res://Fonts/Font.tres" type="DynamicFont" id=21]
 
 [sub_resource type="TileSet" id=1]
 0/name = "blue_berry40x40.png 0"
@@ -233,6 +239,7 @@ margin_left = 1236.3
 margin_top = 252.181
 margin_right = 1289.3
 margin_bottom = 276.181
+custom_fonts/font = ExtResource( 21 )
 text = "Score:"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -243,6 +250,7 @@ margin_left = 1310.8
 margin_top = 252.536
 margin_right = 1354.8
 margin_bottom = 276.536
+custom_fonts/font = ExtResource( 21 )
 text = "0"
 align = 2
 __meta__ = {
@@ -252,39 +260,41 @@ __meta__ = {
 [node name="Health" type="Node" parent="HUD"]
 
 [node name="Sprite1" type="Sprite" parent="HUD/Health"]
-position = Vector2( 1252.58, 317.28 )
+position = Vector2( 1252.58, 331.28 )
 scale = Vector2( 0.101599, 0.0969692 )
 texture = ExtResource( 12 )
 
 [node name="Sprite2" type="Sprite" parent="HUD/Health"]
-position = Vector2( 1312.23, 317.125 )
+position = Vector2( 1312.23, 331.125 )
 scale = Vector2( 0.101599, 0.0969692 )
 texture = ExtResource( 12 )
 
 [node name="Sprite3" type="Sprite" parent="HUD/Health"]
-position = Vector2( 1372.49, 317.125 )
+position = Vector2( 1372.49, 331.125 )
 scale = Vector2( 0.101599, 0.0969692 )
 texture = ExtResource( 12 )
 
 [node name="Season" type="Node" parent="HUD"]
 
 [node name="SeasonalPlants" type="Label" parent="HUD/Season"]
-margin_left = 1247.98
-margin_top = 367.0
-margin_right = 1392.98
-margin_bottom = 390.0
-text = "Harvest these plants:"
+margin_left = 1235.2
+margin_top = 381.107
+margin_right = 1508.2
+margin_bottom = 529.107
+custom_fonts/font = ExtResource( 21 )
+text = "Harvest these
+plants:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="SeasonSprite1" type="Sprite" parent="HUD/Season"]
-position = Vector2( 1320.9, 440.5 )
+position = Vector2( 1320.9, 519.5 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 8 )
 
 [node name="SeasonSprite2" type="Sprite" parent="HUD/Season"]
-position = Vector2( 1320.9, 535.5 )
+position = Vector2( 1320.9, 614.5 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 9 )
 
@@ -292,5 +302,33 @@ texture = ExtResource( 9 )
 position = Vector2( 1313.7, 120.321 )
 scale = Vector2( 0.387063, 0.393612 )
 texture = ExtResource( 11 )
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 16 )
+volume_db = -45.0
+
+[node name="Countdown" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 17 )
+volume_db = -35.0
+
+[node name="Eating" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 18 )
+volume_db = -40.0
+
+[node name="Health" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 19 )
+volume_db = -35.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
+
+[node name="yellow_bg (4)" type="Sprite" parent="."]
+position = Vector2( 1318.92, 402.36 )
+scale = Vector2( 0.367309, 1.27874 )
+texture = ExtResource( 20 )
+flip_h = true
 
 [connection signal="timeout" from="SlimeTick" to="." method="_on_SlimeTick_timeout"]

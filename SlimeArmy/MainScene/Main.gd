@@ -21,6 +21,7 @@ func _ready():
 	draw_plant()
 	draw_slime()
 	update_health(health)
+	$Sounds/BackgroundMusic.play()
 	
 func place_plant():
 	randomize()
@@ -137,35 +138,42 @@ func check_plant_farmed():
 	for i in range(plant_pos.size()):
 		if plant_pos[i] == slime_body[0]:
 			plant_pos[i] = place_plant()
-			
 			if season == 0:
 				if (plant_pic[i] > 0 && plant_pic[i] < 1) || (plant_pic[i] > 3 && plant_pic[i] < 4):
 					update_score(slime_body.size())
 					add_plant = true
+					$Sounds/Eating.play(0)
 				else:
 					health = health - 1
 					update_health(health)
+					$Sounds/Health.play(0)
 			elif season == 1:
 				if (plant_pic[i] > 1 && plant_pic[i] < 2) || (plant_pic[i] > 4 && plant_pic[i] < 5):
 					update_score(slime_body.size())
 					add_plant = true
+					$Sounds/Eating.play(0)
 				else:
 					health = health - 1
 					update_health(health)
+					$Sounds/Health.play(0)
 			elif season == 2:
 				if (plant_pic[i] > 3 && plant_pic[i] < 4) || (plant_pic[i] > 5 && plant_pic[i] < 6):
 					update_score(slime_body.size())
 					add_plant = true
+					$Sounds/Eating.play(0)
 				else:
 					health = health - 1
 					update_health(health)
+					$Sounds/Health.play(0)
 			elif season == 3:
 				if (plant_pic[i] > 2 && plant_pic[i] < 3) || (plant_pic[i] > 1 && plant_pic[i] < 2):
 					update_score(slime_body.size())
 					add_plant = true
+					$Sounds/Eating.play(0)
 				else:
 					health = health - 1
 					update_health(health)
+					$Sounds/Health.play(0)
 		
 func check_game_over():
 	var head = slime_body[0]
@@ -182,7 +190,6 @@ func check_game_over():
 func reset():
 	slime_body = [Vector2(5,10)]
 	slime_direction = Vector2(1,0)
-	timer_reset()
 	update_score(0)
 	health = 3
 	update_health(health)
@@ -195,7 +202,7 @@ func _on_SlimeTick_timeout():
 	draw_plant()
 	draw_slime()
 	check_plant_farmed()
-	timer()
+	#timer()
 	check_season()
 	
 func _process(delta):
@@ -215,8 +222,8 @@ func init_plant():
 
 #löscht ab und zu alte plants und erstellt neue
 func check_plant():
-	if plant_time < time_passed:
-		plant_time = time_passed
+	if plant_time < int(14-$Timer.time_left):
+		plant_time = int(14-$Timer.time_left)
 		if plant_time % 2 ==0:
 			plant_pos.append(place_plant())
 			var y = rand_range(0,6) 
@@ -227,33 +234,22 @@ func check_plant():
 			plant_pos.remove(x)
 			plant_pic.remove(x)
 		
-
-func timer():
-	time_new = (OS.get_ticks_msec()/1000-1) - (time_reset*reset)
-	if time_passed < time_new:
-		time_passed = time_new
-	#	einkommentieren damit time in konsole
-		#$HUD.update_time(time_passed)
-		#print(time_passed)
-
-func timer_reset():
-	reset+=1
-	time_reset = time_passed
-	time_passed = 0
-	season_x=0
-	return reset
-
-#"season change" nach 10 sek
+#"season change" nach 14 sek
 func check_season():
-	if  season_x < time_passed:
-		season_x = time_passed
-		if season_x % 12 == 0:
-			season=(season+1) %4
-			#print("season changed")
+	if  season_x < int(14-$Timer.time_left):
+		season_x = int(14- $Timer.time_left)
+		print(season_x)
+		#Countdown Sound
+		#print("season changed")
+		if season_x%14 == 10:
+			$Sounds/Countdown.play(0)
+		if season_x%14 == 13:
+			season=(season+1) % 4
+			$Timer.start(15)
+			season_x = 0
 		if season == 0:
 			update_season_plants("res://Graphics/blue_berry.png", "res://Graphics/purple_flower.png","res://Graphics/spring_icon.png")
 			$TextureRect.texture = load("res://Graphics/spring.png")
-			
 		elif season == 1:
 			update_season_plants("res://Graphics/blue_flower.png", "res://Graphics/red_berry.png", "res://Graphics/summer_icon.png")
 			$TextureRect.texture = load("res://Graphics/grass.png")

@@ -1,17 +1,22 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://FinalScore/FinalScore.gd" type="Script" id=1]
 [ext_resource path="res://Graphics/circle.png" type="Texture" id=2]
 [ext_resource path="res://Fonts/SunnyspellsRegular-MV9ze.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://Sounds/button.wav" type="AudioStream" id=4]
+[ext_resource path="res://Sounds/score.wav" type="AudioStream" id=5]
+[ext_resource path="res://Graphics/yellow_bg (4).jpg" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
 font_data = ExtResource( 3 )
 
-[node name="Node" type="Node"]
+[node name="Main" type="Node2D"]
+
+[node name="Node" type="Node" parent="."]
 script = ExtResource( 1 )
 
-[node name="FinalScore" type="VBoxContainer" parent="."]
+[node name="FinalScore" type="VBoxContainer" parent="Node"]
 margin_left = 120.0
 margin_top = 80.0
 margin_right = 1302.0
@@ -20,7 +25,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Logo" type="TextureRect" parent="FinalScore"]
+[node name="yellow_bg (4)" type="Sprite" parent="Node/FinalScore"]
+position = Vector2( 644.233, 324.084 )
+scale = Vector2( 2.56152, 1.37926 )
+texture = ExtResource( 6 )
+
+[node name="Logo" type="TextureRect" parent="Node/FinalScore"]
+visible = false
 margin_right = 1182.0
 margin_bottom = 40.0
 texture = ExtResource( 2 )
@@ -29,27 +40,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CenterRow" type="HBoxContainer" parent="FinalScore"]
-margin_top = 44.0
+[node name="CenterRow" type="HBoxContainer" parent="Node/FinalScore"]
 margin_right = 1182.0
 margin_bottom = 640.0
 size_flags_vertical = 3
 
-[node name="Buttons" type="VBoxContainer" parent="FinalScore/CenterRow"]
+[node name="Buttons" type="VBoxContainer" parent="Node/FinalScore/CenterRow"]
 margin_right = 1182.0
-margin_bottom = 596.0
+margin_bottom = 640.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Restart" type="Button" parent="FinalScore/CenterRow/Buttons"]
-margin_top = 216.0
+[node name="Restart" type="Button" parent="Node/FinalScore/CenterRow/Buttons"]
+margin_top = 238.0
 margin_right = 1182.0
-margin_bottom = 296.0
+margin_bottom = 318.0
 rect_min_size = Vector2( 360, 80 )
 flat = true
 
-[node name="Label" type="Label" parent="FinalScore/CenterRow/Buttons/Restart"]
+[node name="Label" type="Label" parent="Node/FinalScore/CenterRow/Buttons/Restart"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 1 )
@@ -63,14 +73,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Menu" type="Button" parent="FinalScore/CenterRow/Buttons"]
-margin_top = 300.0
+[node name="Menu" type="Button" parent="Node/FinalScore/CenterRow/Buttons"]
+margin_top = 322.0
 margin_right = 1182.0
-margin_bottom = 380.0
+margin_bottom = 402.0
 rect_min_size = Vector2( 360, 80 )
 flat = true
 
-[node name="Label" type="Label" parent="FinalScore/CenterRow/Buttons/Menu"]
+[node name="Label" type="Label" parent="Node/FinalScore/CenterRow/Buttons/Menu"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 1 )
@@ -84,5 +94,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="FinalScore/CenterRow/Buttons/Restart" to="." method="_on_Restart_pressed"]
-[connection signal="pressed" from="FinalScore/CenterRow/Buttons/Menu" to="." method="_on_Menu_pressed"]
+[node name="Sounds" type="Node" parent="Node"]
+
+[node name="Music" type="AudioStreamPlayer" parent="Node/Sounds"]
+stream = ExtResource( 5 )
+volume_db = -45.0
+
+[node name="Button" type="AudioStreamPlayer" parent="Node/Sounds"]
+stream = ExtResource( 4 )
+volume_db = -33.0
+
+[connection signal="pressed" from="Node/FinalScore/CenterRow/Buttons/Restart" to="Node" method="_on_Restart_pressed"]
+[connection signal="pressed" from="Node/FinalScore/CenterRow/Buttons/Menu" to="Node" method="_on_Menu_pressed"]
