@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://FinalScore/FinalScore.gd" type="Script" id=1]
 [ext_resource path="res://Graphics/circle.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Sounds/button.wav" type="AudioStream" id=4]
 [ext_resource path="res://Sounds/score.wav" type="AudioStream" id=5]
 [ext_resource path="res://Graphics/sidebar.jpg" type="Texture" id=6]
+[ext_resource path="res://Graphics/EndSprite.png" type="Texture" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
@@ -17,10 +18,14 @@ font_data = ExtResource( 3 )
 script = ExtResource( 1 )
 
 [node name="FinalScore" type="VBoxContainer" parent="Node"]
-margin_left = 120.0
-margin_top = 80.0
-margin_right = 1302.0
-margin_bottom = 720.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -591.0
+margin_top = -334.0
+margin_right = 591.0
+margin_bottom = 334.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -42,20 +47,29 @@ __meta__ = {
 
 [node name="CenterRow" type="HBoxContainer" parent="Node/FinalScore"]
 margin_right = 1182.0
-margin_bottom = 640.0
+margin_bottom = 668.0
 size_flags_vertical = 3
 
+[node name="TextureRect" type="TextureRect" parent="Node/FinalScore/CenterRow"]
+margin_right = 500.0
+margin_bottom = 668.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Buttons" type="VBoxContainer" parent="Node/FinalScore/CenterRow"]
+margin_left = 504.0
 margin_right = 1182.0
-margin_bottom = 640.0
+margin_bottom = 668.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
 [node name="Restart" type="Button" parent="Node/FinalScore/CenterRow/Buttons"]
-margin_top = 238.0
-margin_right = 1182.0
-margin_bottom = 318.0
+margin_top = 252.0
+margin_right = 678.0
+margin_bottom = 332.0
 rect_min_size = Vector2( 360, 80 )
 flat = true
 
@@ -74,9 +88,9 @@ __meta__ = {
 }
 
 [node name="Menu" type="Button" parent="Node/FinalScore/CenterRow/Buttons"]
-margin_top = 322.0
-margin_right = 1182.0
-margin_bottom = 402.0
+margin_top = 336.0
+margin_right = 678.0
+margin_bottom = 416.0
 rect_min_size = Vector2( 360, 80 )
 flat = true
 
