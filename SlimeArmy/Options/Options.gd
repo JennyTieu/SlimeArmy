@@ -1,11 +1,11 @@
 extends Node
 
-var music_volume = 0;
 var value;
 
 func _ready():
 	windowMode()
 	$Options/WindowMode/OptionButton.select(value)
+	$Options/Sound/HSlider.value = PlayerData.volume
 	
 func _on_Back_pressed():
 	$Sounds/Button.play(0)
@@ -14,6 +14,7 @@ func _on_Back_pressed():
 func _on_HSlider_value_changed(value):
 	$Sounds/Button.play(0)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), value)
+	PlayerData.volume = value
 
 func _on_OptionButton_item_selected(index):
 	$Sounds/Button.play(0)

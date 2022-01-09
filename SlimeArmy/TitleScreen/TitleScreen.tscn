@@ -17,6 +17,9 @@ script = ExtResource( 1 )
 margin_right = 1422.0
 margin_bottom = 800.0
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Menu" type="VBoxContainer" parent="."]
 anchor_right = 1.0
