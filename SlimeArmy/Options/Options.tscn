@@ -85,9 +85,9 @@ margin_top = 403.794
 margin_right = 1303.41
 margin_bottom = 453.794
 rect_min_size = Vector2( 0, 50 )
-min_value = -80.0
-max_value = 0.0
-value = -40.0
+min_value = -20.0
+max_value = 40.0
+value = -10.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

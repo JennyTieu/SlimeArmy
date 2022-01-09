@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://FinalScore/FinalScore.gd" type="Script" id=1]
 [ext_resource path="res://Graphics/circle.png" type="Texture" id=2]
@@ -9,6 +9,10 @@
 [ext_resource path="res://Graphics/EndSprite.png" type="Texture" id=7]
 
 [sub_resource type="DynamicFont" id=1]
+size = 60
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
 size = 100
 font_data = ExtResource( 3 )
 
@@ -66,17 +70,28 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Restart" type="Button" parent="Node/FinalScore/CenterRow/Buttons"]
-margin_top = 252.0
+[node name="ScoreLabel" type="Label" parent="Node/FinalScore/CenterRow/Buttons"]
+margin_top = 225.0
 margin_right = 678.0
-margin_bottom = 332.0
+margin_bottom = 274.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0.376471, 0.65098, 0.2, 1 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
+text = "Your final score was %s."
+align = 1
+
+[node name="Restart" type="Button" parent="Node/FinalScore/CenterRow/Buttons"]
+margin_top = 278.0
+margin_right = 678.0
+margin_bottom = 358.0
 rect_min_size = Vector2( 360, 80 )
 flat = true
 
 [node name="Label" type="Label" parent="Node/FinalScore/CenterRow/Buttons/Restart"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0.376471, 0.65098, 0.2, 1 )
 custom_constants/shadow_offset_x = 5
 custom_constants/shadow_offset_y = 5
@@ -88,16 +103,16 @@ __meta__ = {
 }
 
 [node name="Menu" type="Button" parent="Node/FinalScore/CenterRow/Buttons"]
-margin_top = 336.0
+margin_top = 362.0
 margin_right = 678.0
-margin_bottom = 416.0
+margin_bottom = 442.0
 rect_min_size = Vector2( 360, 80 )
 flat = true
 
 [node name="Label" type="Label" parent="Node/FinalScore/CenterRow/Buttons/Menu"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0.376471, 0.65098, 0.2, 1 )
 custom_constants/shadow_offset_x = 5
 custom_constants/shadow_offset_y = 5

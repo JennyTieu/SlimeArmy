@@ -17,6 +17,7 @@ var health = 3
 var plant_time = 0
 
 func _ready():
+	PlayerData.score = 0
 	init_plant()
 	draw_plant()
 	draw_slime()
@@ -141,6 +142,7 @@ func check_plant_farmed():
 			if season == 0:
 				if (plant_pic[i] > 0 && plant_pic[i] < 1) || (plant_pic[i] > 3 && plant_pic[i] < 4):
 					update_score(slime_body.size())
+					PlayerData.score += 1
 					add_plant = true
 					$Sounds/Eating.play(0)
 				else:
@@ -150,6 +152,7 @@ func check_plant_farmed():
 			elif season == 1:
 				if (plant_pic[i] > 1 && plant_pic[i] < 2) || (plant_pic[i] > 4 && plant_pic[i] < 5):
 					update_score(slime_body.size())
+					PlayerData.score += 1
 					add_plant = true
 					$Sounds/Eating.play(0)
 				else:
@@ -159,6 +162,7 @@ func check_plant_farmed():
 			elif season == 2:
 				if (plant_pic[i] > 3 && plant_pic[i] < 4) || (plant_pic[i] > 5 && plant_pic[i] < 6):
 					update_score(slime_body.size())
+					PlayerData.score += 1
 					add_plant = true
 					$Sounds/Eating.play(0)
 				else:
@@ -168,6 +172,7 @@ func check_plant_farmed():
 			elif season == 3:
 				if (plant_pic[i] > 2 && plant_pic[i] < 3) || (plant_pic[i] > 1 && plant_pic[i] < 2):
 					update_score(slime_body.size())
+					PlayerData.score += 1
 					add_plant = true
 					$Sounds/Eating.play(0)
 				else:
