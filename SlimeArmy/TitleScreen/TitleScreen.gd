@@ -15,3 +15,7 @@ func _on_Options_pressed():
 func _on_Quit_pressed():
 	$Sounds/Button.play(0)
 	get_tree().quit();
+
+func _on_Controls_pressed():
+	$Sounds/Button.play(0)
+	get_tree().change_scene("res://ControlScreen/Controls.tscn");

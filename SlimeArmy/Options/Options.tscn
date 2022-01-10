@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Options/Options.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/Font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Fonts/SunnyspellsRegular-MV9ze.otf" type="DynamicFontData" id=3]
 [ext_resource path="res://Fonts/FontGreen.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Sounds/button.wav" type="AudioStream" id=5]
+[ext_resource path="res://Graphics/sidebar.jpg" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 35
@@ -16,6 +17,11 @@ font_data = ExtResource( 3 )
 
 [node name="Node" type="Node"]
 script = ExtResource( 1 )
+
+[node name="yellow_bg (4)" type="Sprite" parent="."]
+position = Vector2( 700.865, 393.931 )
+scale = Vector2( 2.56152, 1.37926 )
+texture = ExtResource( 6 )
 
 [node name="Options" type="VBoxContainer" parent="."]
 anchor_right = 1.0

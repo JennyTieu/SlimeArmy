@@ -23,6 +23,7 @@ func _ready():
 	draw_slime()
 	update_health(health)
 	$Sounds/BackgroundMusic.play()
+	$PauseMenu/CanvasLayer/Panel.visible = false
 	
 func place_plant():
 	randomize()
@@ -78,17 +79,13 @@ func draw_slime():
 				$SlimePlant.set_cell(block.x,block.y, SLIME, false, false, false,Vector2(0,0))
 			if previous_block.y == -1:
 				$SlimePlant.set_cell(block.x,block.y, SLIME, false, false, false,Vector2(1,0))
-			
-		
-		
+
 func relation2(first_block: Vector2, second_block:Vector2):
 	var block_relation = second_block - first_block
 	if block_relation == Vector2(-1,0): return 'left'
 	if block_relation == Vector2(1,0): return 'right'
 	if block_relation == Vector2(0,1): return 'bottom'
 	if block_relation == Vector2(0,-1): return 'top'
-	
-
 
 func move_slime():
 	if add_plant:
@@ -115,12 +112,12 @@ func move_slime():
 			new_head = slime_body[0] + slime_direction
 		body_copy.insert(0, new_head)
 		slime_body = body_copy
-	
+
 func delete_tiles(id:int):
 	var cells = $SlimePlant.get_used_cells_by_id(id)
 	for cell in cells:
 		$SlimePlant.set_cell(cell.x, cell.y, -1)
-		
+
 func _input(event):
 	if Input.is_action_just_pressed("ui_up"): 
 		if not slime_direction == Vector2(0,1):
@@ -134,7 +131,10 @@ func _input(event):
 	if Input.is_action_just_pressed("ui_down"): 
 		if not slime_direction == Vector2(0,-1):
 			slime_direction = Vector2(0,1)
-	
+	if Input.is_action_just_pressed("ui_cancel"): 
+		get_tree().paused = true
+		$PauseMenu/CanvasLayer/Panel.visible = true
+
 func check_plant_farmed():
 	for i in range(plant_pos.size()):
 		if plant_pos[i] == slime_body[0]:
@@ -179,7 +179,7 @@ func check_plant_farmed():
 					health = health - 1
 					update_health(health)
 					$Sounds/Health.play(0)
-		
+
 func check_game_over():
 	var head = slime_body[0]
 	#leaves screen
@@ -191,7 +191,7 @@ func check_game_over():
 			reset()
 	if health == 0:
 		reset()
-	
+
 func reset():
 	slime_body = [Vector2(5,10)]
 	slime_direction = Vector2(1,0)
@@ -290,3 +290,24 @@ func update_season_plants(seasonPlant1, seasonPlant2, seasonIcon):
 	$HUD/Season/SeasonSprite1.texture = load(seasonPlant1)
 	$HUD/Season/SeasonSprite2.texture = load(seasonPlant2)
 	$HUD/Season/SeasonSprite3.texture = load(seasonIcon)
+
+
+func _on_Restart_pressed():
+	get_tree().paused = false
+	$Sounds/Button.play(0)
+	get_tree().change_scene("res://MainScene/Main.tscn");
+
+func _on_Menu_pressed():
+	get_tree().paused = false
+	$Sounds/Button.play(0)
+	get_tree().change_scene("res://TitleScreen/TitleScreen.tscn");
+
+func _on_Quit_pressed():
+	get_tree().paused = false
+	$Sounds/Button.play(0)
+	get_tree().quit();$Sounds/Button.play(0)
+	get_tree().change_scene("res://TitleScreen/TitleScreen.tscn");
+
+func _on_Cancel_pressed():
+	get_tree().paused = false
+	$PauseMenu/CanvasLayer/Panel.visible = false

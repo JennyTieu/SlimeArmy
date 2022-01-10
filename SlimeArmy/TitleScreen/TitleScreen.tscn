@@ -36,7 +36,7 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="Buttons" type="VBoxContainer" parent="Menu/CenterRow"]
-margin_top = 552.0
+margin_top = 468.0
 margin_right = 360.0
 margin_bottom = 800.0
 size_flags_horizontal = 2
@@ -86,10 +86,32 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Quit" type="Button" parent="Menu/CenterRow/Buttons"]
+[node name="Controls" type="Button" parent="Menu/CenterRow/Buttons"]
 margin_top = 168.0
 margin_right = 360.0
 margin_bottom = 248.0
+rect_min_size = Vector2( 360, 80 )
+size_flags_horizontal = 4
+flat = true
+
+[node name="Label" type="Label" parent="Menu/CenterRow/Buttons/Controls"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0.376471, 0.65098, 0.2, 1 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
+text = "Controls"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quit" type="Button" parent="Menu/CenterRow/Buttons"]
+margin_top = 252.0
+margin_right = 360.0
+margin_bottom = 332.0
 rect_min_size = Vector2( 360, 80 )
 size_flags_horizontal = 4
 flat = true
@@ -120,4 +142,5 @@ volume_db = -40.0
 
 [connection signal="pressed" from="Menu/CenterRow/Buttons/NewGame" to="." method="_on_NewGame_pressed"]
 [connection signal="pressed" from="Menu/CenterRow/Buttons/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="Menu/CenterRow/Buttons/Controls" to="." method="_on_Controls_pressed"]
 [connection signal="pressed" from="Menu/CenterRow/Buttons/Quit" to="." method="_on_Quit_pressed"]
