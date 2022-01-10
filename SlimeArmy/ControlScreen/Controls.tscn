@@ -156,8 +156,8 @@ margin_right = 1158.32
 margin_bottom = 551.478
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0.376471, 0.65098, 0.2, 1 )
-custom_constants/shadow_offset_x = 2
-custom_constants/shadow_offset_y = 2
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 3
 text = "use Escape to get 
 to the Pause menu"
 uppercase = true
