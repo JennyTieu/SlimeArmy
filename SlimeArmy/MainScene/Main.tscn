@@ -41,11 +41,11 @@ font_data = ExtResource( 22 )
 size = 100
 font_data = ExtResource( 22 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=5]
 size = 60
 font_data = ExtResource( 22 )
 
-[sub_resource type="TileSet" id=5]
+[sub_resource type="TileSet" id=6]
 0/name = "blue_berry40x40.png 0"
 0/texture = ExtResource( 6 )
 0/tex_offset = Vector2( 0, 0 )
@@ -326,7 +326,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="PauseMenu/CanvasLayer/Panel/VBoxContainer/Cancel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color_shadow = Color( 0.376471, 0.65098, 0.2, 1 )
 custom_constants/shadow_offset_x = 5
 custom_constants/shadow_offset_y = 5
@@ -362,7 +362,7 @@ __meta__ = {
 }
 
 [node name="SlimePlant" type="TileMap" parent="."]
-tile_set = SubResource( 5 )
+tile_set = SubResource( 6 )
 cell_size = Vector2( 40, 40 )
 cell_custom_transform = Transform2D( 65, 0, 0, 65, 0, 0 )
 format = 1
