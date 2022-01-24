@@ -40,6 +40,8 @@ texture = ExtResource( 5 )
 [node name="Options" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -4.0
+margin_right = -4.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -101,9 +103,9 @@ custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0.376471, 0.65098, 0.2, 1 )
 custom_constants/shadow_offset_x = 3
 custom_constants/shadow_offset_y = 3
-text = "there are icons of the present season
-Different plants need to be harvest at different seasons
-You can hear a countdown when season is going 
+text = "The icon of the present season will be shown
+Different plants are ready to be harvested at different seasons
+You can hear a countdown when the season is going 
 to change"
 valign = 1
 uppercase = true
@@ -112,10 +114,10 @@ __meta__ = {
 }
 
 [node name="Fall" type="TextureRect" parent="SeosonDescription"]
-margin_left = 907.0
-margin_top = -28.9999
-margin_right = 1407.0
-margin_bottom = 471.0
+margin_left = 1074.49
+margin_top = -24.5454
+margin_right = 1574.49
+margin_bottom = 475.455
 rect_scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 11 )
 __meta__ = {
@@ -123,26 +125,29 @@ __meta__ = {
 }
 
 [node name="Spring" type="TextureRect" parent="SeosonDescription"]
-margin_left = 1015.0
-margin_top = -32.9999
-margin_right = 1515.0
-margin_bottom = 467.0
+margin_left = 1182.49
+margin_top = -24.5454
+margin_right = 1682.49
+margin_bottom = 475.455
 rect_scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Sommer" type="TextureRect" parent="SeosonDescription"]
-margin_left = 907.0
-margin_top = 69.0
-margin_right = 1407.0
-margin_bottom = 569.0
+margin_left = 1074.49
+margin_top = 73.4545
+margin_right = 1574.49
+margin_bottom = 573.454
 rect_scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 2 )
 
 [node name="Winter" type="TextureRect" parent="SeosonDescription"]
-margin_left = 1015.0
-margin_top = 67.0
-margin_right = 1515.0
-margin_bottom = 567.0
+margin_left = 1182.49
+margin_top = 75.4545
+margin_right = 1682.49
+margin_bottom = 575.454
 rect_scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 9 )
 
@@ -172,7 +177,7 @@ custom_colors/font_color_shadow = Color( 0.376471, 0.65098, 0.2, 1 )
 custom_constants/shadow_offset_x = 3
 custom_constants/shadow_offset_y = 3
 text = "your current score
-harvest the right plants to increase your score and to make your slime bigger"
+harvest the right plants to increase your score and make your slime army bigger"
 valign = 1
 uppercase = true
 __meta__ = {
@@ -187,30 +192,30 @@ margin_bottom = 74.0
 texture = ExtResource( 12 )
 
 [node name="Slime" type="TextureRect" parent="ScoreDescription"]
-margin_left = 1258.0
-margin_top = 75.0
-margin_right = 1405.0
-margin_bottom = 129.0
+margin_left = 2.1748
+margin_top = 116.156
+margin_right = 149.175
+margin_bottom = 170.156
 texture = ExtResource( 20 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Slime2" type="TextureRect" parent="ScoreDescription"]
-margin_left = 1295.0
-margin_top = 75.0
-margin_right = 1442.0
-margin_bottom = 129.0
+margin_left = 39.1748
+margin_top = 116.156
+margin_right = 186.175
+margin_bottom = 170.156
 texture = ExtResource( 20 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Slime3" type="TextureRect" parent="ScoreDescription"]
-margin_left = 1332.0
-margin_top = 75.0
-margin_right = 1479.0
-margin_bottom = 129.0
+margin_left = 76.1748
+margin_top = 116.156
+margin_right = 223.175
+margin_bottom = 170.156
 texture = ExtResource( 20 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -226,7 +231,7 @@ custom_colors/font_color_shadow = Color( 0.376471, 0.65098, 0.2, 1 )
 custom_constants/shadow_offset_x = 3
 custom_constants/shadow_offset_y = 3
 text = "your remaining lives
-harvesting wrong plants or hitting yourself or the wall will take lives from you"
+It's game over immediately when you hit your own army or the wall "
 valign = 1
 uppercase = true
 __meta__ = {
@@ -236,10 +241,10 @@ __meta__ = {
 [node name="Health" type="TextureRect" parent="HealthDescription"]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = 339.0
-margin_top = -51.0
-margin_right = 839.0
-margin_bottom = 449.0
+margin_left = 349.927
+margin_top = -55.3272
+margin_right = 849.927
+margin_bottom = 444.673
 rect_scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 13 )
 __meta__ = {
@@ -249,10 +254,10 @@ __meta__ = {
 [node name="Health2" type="TextureRect" parent="HealthDescription"]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = 399.0
-margin_top = -51.0
-margin_right = 899.0
-margin_bottom = 449.0
+margin_left = 409.927
+margin_top = -55.3272
+margin_right = 909.927
+margin_bottom = 444.673
 rect_scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 13 )
 __meta__ = {
@@ -262,10 +267,10 @@ __meta__ = {
 [node name="Health3" type="TextureRect" parent="HealthDescription"]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = 460.0
-margin_top = -51.0
-margin_right = 960.0
-margin_bottom = 449.0
+margin_left = 470.927
+margin_top = -55.3272
+margin_right = 970.927
+margin_bottom = 444.673
 rect_scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 13 )
 __meta__ = {
@@ -281,7 +286,7 @@ custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0.376471, 0.65098, 0.2, 1 )
 custom_constants/shadow_offset_x = 3
 custom_constants/shadow_offset_y = 3
-text = "harvest the plants shown
+text = "harvest the plants shown on your screen
 if you harvest the wrong plant
 a life will be taken from you"
 valign = 1
@@ -291,50 +296,50 @@ __meta__ = {
 }
 
 [node name="BlueBerry" type="TextureRect" parent="FlowersDescription"]
-margin_left = 507.0
-margin_top = -20.0
-margin_right = 1007.0
-margin_bottom = 480.0
+margin_left = 706.561
+margin_top = -16.4365
+margin_right = 1206.56
+margin_bottom = 483.563
 rect_scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 14 )
 
 [node name="Mint" type="TextureRect" parent="FlowersDescription"]
-margin_left = 604.0
-margin_top = -21.0
-margin_right = 1104.0
-margin_bottom = 479.0
+margin_left = 803.561
+margin_top = -17.4365
+margin_right = 1303.56
+margin_bottom = 482.563
 rect_scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 18 )
 
 [node name="PurpleFlower" type="TextureRect" parent="FlowersDescription"]
-margin_left = 704.0
-margin_top = -17.0
-margin_right = 1204.0
-margin_bottom = 483.0
+margin_left = 903.561
+margin_top = -13.4365
+margin_right = 1403.56
+margin_bottom = 486.563
 rect_scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 15 )
 
 [node name="RedBerry" type="TextureRect" parent="FlowersDescription"]
-margin_left = 508.0
-margin_top = 70.0
-margin_right = 1008.0
-margin_bottom = 570.0
+margin_left = 707.561
+margin_top = 73.5635
+margin_right = 1207.56
+margin_bottom = 573.563
 rect_scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 17 )
 
 [node name="BlueFlower" type="TextureRect" parent="FlowersDescription"]
-margin_left = 709.0
-margin_top = 75.0
-margin_right = 1209.0
-margin_bottom = 575.0
+margin_left = 908.561
+margin_top = 78.5635
+margin_right = 1408.56
+margin_bottom = 578.563
 rect_scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 16 )
 
 [node name="YellowFlower" type="TextureRect" parent="FlowersDescription"]
-margin_left = 606.0
-margin_top = 71.0
-margin_right = 1106.0
-margin_bottom = 571.0
+margin_left = 805.561
+margin_top = 74.5635
+margin_right = 1305.56
+margin_bottom = 574.563
 rect_scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 19 )
 __meta__ = {
@@ -359,7 +364,7 @@ volume_db = -33.0
 
 [node name="Countdown" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 4 )
-volume_db = -35.0
+volume_db = -25.0
 
 [connection signal="pressed" from="Options/Buttons/Back" to="." method="_on_Back_pressed"]
 [connection signal="pressed" from="AudioPlayButton" to="." method="_on_AudioPlayButton_pressed"]

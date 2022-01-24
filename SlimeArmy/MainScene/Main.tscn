@@ -465,15 +465,15 @@ volume_db = -45.0
 
 [node name="Countdown" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 17 )
-volume_db = -35.0
+volume_db = -25.0
 
 [node name="Eating" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 18 )
-volume_db = -40.0
+volume_db = -35.0
 
 [node name="Health" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 19 )
-volume_db = -35.0
+volume_db = -25.0
 
 [node name="Button" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 23 )

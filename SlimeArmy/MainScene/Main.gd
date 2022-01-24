@@ -207,7 +207,6 @@ func _on_SlimeTick_timeout():
 	draw_plant()
 	draw_slime()
 	check_plant_farmed()
-	#timer()
 	check_season()
 	
 func _process(delta):
@@ -229,23 +228,22 @@ func init_plant():
 func check_plant():
 	if plant_time < int(14-$Timer.time_left):
 		plant_time = int(14-$Timer.time_left)
-		if plant_time % 2 ==0:
+		if plant_time % 3 ==0:
 			plant_pos.append(place_plant())
 			var y = rand_range(0,6) 
 			plant_pic.append(y)
-		if plant_time % 4 ==0:
+		if plant_time % 6 ==0:
 			var x = rand_range(0,plant_pos.size())
 			delete_tiles(plant_pic[x])
 			plant_pos.remove(x)
 			plant_pic.remove(x)
+		if plant_time %14 ==13:
+			plant_time = 0
 		
 #"season change" nach 14 sek
 func check_season():
 	if  season_x < int(14-$Timer.time_left):
 		season_x = int(14- $Timer.time_left)
-		print(season_x)
-		#Countdown Sound
-		#print("season changed")
 		if season_x%14 == 10:
 			$Sounds/Countdown.play(0)
 		if season_x%14 == 13:
